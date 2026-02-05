@@ -90,34 +90,12 @@ body{background:#2f3136;color:#fff}
 .paypal{background:#006aa3}
 .amazon{background:#f39c12;color:#111}
 
-/* NEW USA apps colors */
+/* extra USA apps */
 .walmart{background:#0071ce}
 .target{background:#cc0000}
 .bestbuy{background:#003b64}
 .uber{background:#000000}
 .doordash{background:#ff3008}
-
-/* -------- AMAZON EXPAND -------- */
-
-.amazonCard{
-  width:100%;
-  transition:.4s;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.amazonCard.active{
-  min-height:220px;
-}
-
-.amazonCard .more{
-  display:none;
-  margin-top:10px;
-}
-
-.amazonCard.active .more{
-  display:block;
-}
 
 .btn{
   margin-top:12px;
@@ -189,18 +167,14 @@ body{background:#2f3136;color:#fff}
   <a id="paypalBtn" class="btn" href="#">GET YOURS NOW</a>
 </div>
 
+<!-- Amazon – now same as others -->
 <div class="strip amazon">
-
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg">
   <span>Amazon</span>
   <a id="amazonBtn" class="btn" href="#">GET YOURS NOW</a>
 </div>
- 
 
-  
-
-
-<!-- ============ NEW USA POPULAR APPS (SAME STYLE) ============ -->
+<!-- extra USA apps -->
 
 <div class="strip walmart">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/walmart.svg">
@@ -234,33 +208,24 @@ body{background:#2f3136;color:#fff}
 
 
 <script>
-/* amazon expand */
-document.getElementById("amazonCard").addEventListener("click",function(){
-  this.classList.toggle("active");
-});
-
-
-/* GOOGLE SHEET CONNECTED (READY) */
-
-fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec")
+fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec",{cache:"no-store"})
 .then(r => r.json())
 .then(data => {
 
-  if(data.google)   document.getElementById("googleBtn").href   = data.google;
-  if(data.xbox)     document.getElementById("xboxBtn").href     = data.xbox;
-  if(data.steam)    document.getElementById("steamBtn").href    = data.steam;
-  if(data.ps)       document.getElementById("psBtn").href       = data.ps;
-  if(data.spotify)  document.getElementById("spotifyBtn").href  = data.spotify;
-  if(data.itunes)   document.getElementById("itunesBtn").href   = data.itunes;
-  if(data.paypal)   document.getElementById("paypalBtn").href   = data.paypal;
-  if(data.amazon)   document.getElementById("amazonBtn").href   = data.amazon;
+  if(data.google)   googleBtn.href   = data.google;
+  if(data.xbox)     xboxBtn.href     = data.xbox;
+  if(data.steam)    steamBtn.href    = data.steam;
+  if(data.ps)       psBtn.href       = data.ps;
+  if(data.spotify)  spotifyBtn.href  = data.spotify;
+  if(data.itunes)   itunesBtn.href   = data.itunes;
+  if(data.paypal)   paypalBtn.href   = data.paypal;
+  if(data.amazon)   amazonBtn.href   = data.amazon;
 
-  /* NEW USA apps mapping */
-  if(data.walmart)  document.getElementById("walmartBtn").href  = data.walmart;
-  if(data.target)   document.getElementById("targetBtn").href   = data.target;
-  if(data.bestbuy)  document.getElementById("bestbuyBtn").href  = data.bestbuy;
-  if(data.uber)     document.getElementById("uberBtn").href     = data.uber;
-  if(data.doordash) document.getElementById("doordashBtn").href = data.doordash;
+  if(data.walmart)  walmartBtn.href  = data.walmart;
+  if(data.target)   targetBtn.href   = data.target;
+  if(data.bestbuy)  bestbuyBtn.href  = data.bestbuy;
+  if(data.uber)     uberBtn.href     = data.uber;
+  if(data.doordash) doordashBtn.href = data.doordash;
 
 });
 </script>
