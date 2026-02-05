@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Giveaway</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#2f3136;color:#fff}
+
+/* ---------- TOP SLIDER ----------- */
+
+.hero{
+  padding:40px 0 20px;
+  text-align:center;
+}
+
+.slider{
+  width:260px;
+  height:150px;
+  margin:0 auto 25px;
+  position:relative;
+  overflow:hidden;
+}
+
+.cards{
+  display:flex;
+  width:780px;
+  animation:slide 6s infinite;
+}
+
+.cards div{
+  width:260px;
+  height:150px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  font-weight:bold;
+}
+
+.c1{background:#0f9d58}
+.c2{background:#0097a7}
+.c3{background:#c62828}
+
+@keyframes slide{
+  0%{transform:translateX(0)}
+  30%{transform:translateX(0)}
+  40%{transform:translateX(-260px)}
+  70%{transform:translateX(-260px)}
+  80%{transform:translateX(-520px)}
+  100%{transform:translateX(-520px)}
+}
+
+.hero h1{
+  font-size:28px;
+  line-height:1.2;
+}
+
+/* --------- STRIP CARDS ----------- */
+
+.strip{
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.strip img{
+  width:60px;
+  margin-bottom:8px;
+  filter:invert(1);
+}
+
+.strip span{
+  font-size:15px;
+  letter-spacing:1px;
+}
+
+.google{background:#0097a7}
+.xbox{background:#107c10}
+.steam{background:#c62828}
+.ps{background:#2c45a5}
+.spotify{background:#1db954}
+.itunes{background:#ff4f81}
+.paypal{background:#006aa3}
+.amazon{background:#f39c12;color:#111}
+
+/* -------- AMAZON EXPAND -------- */
+
+.amazonCard{
+  width:100%;
+  transition:.4s;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.amazonCard.active{
+  min-height:220px;
+}
+
+.amazonCard .more{
+  display:none;
+  margin-top:10px;
+}
+
+.amazonCard.active .more{
+  display:block;
+}
+
+.btn{
+  margin-top:12px;
+  display:inline-block;
+  padding:10px 24px;
+  border-radius:25px;
+  background:#00000055;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+
+  <div class="slider">
+    <div class="cards">
+      <div class="c1">$10</div>
+      <div class="c2">$25</div>
+      <div class="c3">$50</div>
+    </div>
+  </div>
+
+  <h1>DO YOU WANT<br>SOME FREE<br>GIFT CARDS</h1>
+</div>
+
+
+<div class="strip google">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg">
+  <span>Google Play</span>
+  <a id="googleBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip xbox">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xbox.svg">
+  <span>XBOX</span>
+  <a id="xboxBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip steam">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg">
+  <span>STEAM</span>
+  <a id="steamBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip ps">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/playstation.svg">
+  <span>PlayStation</span>
+  <a id="psBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip spotify">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg">
+  <span>Spotify</span>
+  <a id="spotifyBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip itunes">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
+  <span>iTunes</span>
+  <a id="itunesBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+<div class="strip paypal">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/paypal.svg">
+  <span>PayPal</span>
+  <a id="paypalBtn" class="btn" href="#">GET YOURS NOW</a>
+</div>
+
+
+<div class="strip amazon amazonCard" id="amazonCard">
+
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg">
+  <span>Amazon</span>
+
+  <div class="more">
+    <div>Get free Amazon Gift Card code and buy anything on Amazon.</div>
+    <a id="amazonBtn" class="btn" href="#">GET YOURS NOW</a>
+  </div>
+
+</div>
+
+
+<script>
+/* amazon expand */
+document.getElementById("amazonCard").addEventListener("click",function(){
+  this.classList.toggle("active");
+});
+
+
+/* GOOGLE SHEET CONNECTED (READY) */
+
+fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec")
+.then(r => r.json())
+.then(data => {
+
+  if(data.google)  document.getElementById("googleBtn").href  = data.google;
+  if(data.xbox)    document.getElementById("xboxBtn").href    = data.xbox;
+  if(data.steam)   document.getElementById("steamBtn").href   = data.steam;
+  if(data.ps)      document.getElementById("psBtn").href      = data.ps;
+  if(data.spotify) document.getElementById("spotifyBtn").href = data.spotify;
+  if(data.itunes)  document.getElementById("itunesBtn").href  = data.itunes;
+  if(data.paypal)  document.getElementById("paypalBtn").href  = data.paypal;
+  if(data.amazon)  document.getElementById("amazonBtn").href  = data.amazon;
+
+});
+</script>
+
+</body>
+</html>
