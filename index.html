@@ -1,224 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Giveaway</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<title>USA Gift Cards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#2f3136;color:#fff}
-
-/* ---------- TOP SLIDER ----------- */
-
-.hero{
-  padding:40px 0 20px;
-  text-align:center;
-}
-
-.slider{
-  width:260px;
-  height:150px;
-  margin:0 auto 25px;
-  position:relative;
-  overflow:hidden;
-}
-
-.cards{
-  display:flex;
-  width:780px;
-  animation:slide 6s infinite;
-}
-
-.cards div{
-  width:260px;
-  height:150px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  font-weight:bold;
-}
-
-.c1{background:#0f9d58}
-.c2{background:#0097a7}
-.c3{background:#c62828}
-
-@keyframes slide{
-  0%{transform:translateX(0)}
-  30%{transform:translateX(0)}
-  40%{transform:translateX(-260px)}
-  70%{transform:translateX(-260px)}
-  80%{transform:translateX(-520px)}
-  100%{transform:translateX(-520px)}
-}
-
-.hero h1{
-  font-size:28px;
-  line-height:1.2;
-}
-
-/* --------- STRIP CARDS ----------- */
-
-.strip{
-  min-height:120px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.strip img{
-  width:60px;
-  margin-bottom:8px;
-  filter:invert(1);
-}
-
-.strip span{
-  font-size:15px;
-  letter-spacing:1px;
-}
-
-.google{background:#0097a7}
-.xbox{background:#107c10}
-.steam{background:#c62828}
-.ps{background:#2c45a5}
-.spotify{background:#1db954}
-.itunes{background:#ff4f81}
-.paypal{background:#006aa3}
-.amazon{background:#f39c12;color:#111}
-
-/* -------- AMAZON EXPAND -------- */
-
-.amazonCard{
-  width:100%;
-  transition:.4s;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.amazonCard.active{
-  min-height:220px;
-}
-
-.amazonCard .more{
-  display:none;
-  margin-top:10px;
-}
-
-.amazonCard.active .more{
-  display:block;
-}
-
-.btn{
-  margin-top:12px;
-  display:inline-block;
-  padding:10px 24px;
-  border-radius:25px;
-  background:#00000055;
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#222;
   color:#fff;
+  text-align:center;
+}
+
+/* ---------- HERO CARD STACK ---------- */
+
+.cardStack{
+  position:relative;
+  width:280px;
+  height:190px;
+  margin:40px auto 10px;
+}
+
+.card{
+  position:absolute;
+  width:150px;
+  border-radius:14px;
+  top:25px;
+  left:65px;
+  transition:all .6s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.card.left{
+  transform:translateX(-70px) rotate(-12deg) scale(.92);
+  z-index:1;
+  opacity:.8;
+}
+
+.card.center{
+  transform:translateX(0) rotate(0deg) scale(1.05);
+  z-index:3;
+}
+
+.card.right{
+  transform:translateX(70px) rotate(12deg) scale(.92);
+  z-index:2;
+  opacity:.8;
+}
+
+h1{
+  font-size:28px;
+  margin:15px 10px 25px;
+}
+
+/* ---------- LIST CARDS ---------- */
+
+.listCard{
+  display:block;
+  width:100%;
+  padding:22px 0;
   text-decoration:none;
-  font-weight:bold;
+  color:#fff;
+  font-size:20px;
+  font-weight:600;
+}
+
+.google{background:#0a8fa2;}
+.xbox{background:#0db14b;}
+.steam{background:#d32f2f;}
+.ps{background:#2c46a2;}
+.spotify{background:#1db954;}
+.itunes{background:#ff4f8b;}
+.paypal{background:#0070ba;}
+.amazon{background:#ff9900;color:#111;}
+
+.walmart{background:#0071ce;}
+.target{background:#cc0000;}
+.bestbuy{background:#003b64;}
+.uber{background:#000;}
+.doordash{background:#ff3008;}
+
+/* ---------- AMAZON POP ---------- */
+
+.pop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+
+.popBox{
+  background:#ff9900;
+  color:#111;
+  padding:25px;
+  border-radius:18px;
+  width:260px;
+  animation:zoom .4s ease;
+}
+
+.popBox img{
+  width:120px;
+}
+
+@keyframes zoom{
+  from{transform:scale(.6);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 </style>
 </head>
+
 <body>
 
-<div class="hero">
+<!-- ===== HERO ===== -->
 
-  <div class="slider">
-    <div class="cards">
-      <div class="c1">$10</div>
-      <div class="c2">$25</div>
-      <div class="c3">$50</div>
-    </div>
+<div class="cardStack">
+  <img id="cardLeft"  class="card left">
+  <img id="cardCenter" class="card center">
+  <img id="cardRight" class="card right">
+</div>
+
+<h1>DO YOU WANT<br>SOME FREE<br>GIFT CARDS</h1>
+
+<!-- ===== MAIN APPS ===== -->
+
+<a id="googleBtn"  class="listCard google"  href="#" target="_blank">Google Play</a>
+<a id="xboxBtn"    class="listCard xbox"    href="#" target="_blank">XBOX</a>
+<a id="steamBtn"   class="listCard steam"   href="#" target="_blank">STEAM</a>
+<a id="psBtn"      class="listCard ps"      href="#" target="_blank">PlayStation</a>
+<a id="spotifyBtn" class="listCard spotify" href="#" target="_blank">Spotify</a>
+<a id="itunesBtn"  class="listCard itunes"  href="#" target="_blank">iTunes</a>
+<a id="paypalBtn"  class="listCard paypal"  href="#" target="_blank">PayPal</a>
+<a id="amazonBtn"  class="listCard amazon"  href="#">Amazon</a>
+
+<!-- ===== USA EXTRA POPULAR APPS ===== -->
+
+<a id="walmartBtn"  class="listCard walmart"  href="#" target="_blank">Walmart</a>
+<a id="targetBtn"   class="listCard target"   href="#" target="_blank">Target</a>
+<a id="bestbuyBtn"  class="listCard bestbuy"  href="#" target="_blank">Best Buy</a>
+<a id="uberBtn"     class="listCard uber"     href="#" target="_blank">Uber</a>
+<a id="doordashBtn" class="listCard doordash" href="#" target="_blank">DoorDash</a>
+
+
+<!-- ===== AMAZON POPUP ===== -->
+
+<div class="pop" id="pop">
+  <div class="popBox">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"><br><br>
+    <strong>Get Yours Now</strong>
   </div>
-
-  <h1>DO YOU WANT<br>SOME FREE<br>GIFT CARDS</h1>
-</div>
-
-
-<div class="strip google">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg">
-  <span>Google Play</span>
-  <a id="googleBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip xbox">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xbox.svg">
-  <span>XBOX</span>
-  <a id="xboxBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip steam">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg">
-  <span>STEAM</span>
-  <a id="steamBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip ps">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/playstation.svg">
-  <span>PlayStation</span>
-  <a id="psBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip spotify">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg">
-  <span>Spotify</span>
-  <a id="spotifyBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip itunes">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
-  <span>iTunes</span>
-  <a id="itunesBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-<div class="strip paypal">
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/paypal.svg">
-  <span>PayPal</span>
-  <a id="paypalBtn" class="btn" href="#">GET YOURS NOW</a>
-</div>
-
-
-<div class="strip amazon amazonCard" id="amazonCard">
-
-  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg">
-  <span>Amazon</span>
-
-  <div class="more">
-    <div>Get free Amazon Gift Card code and buy anything on Amazon.</div>
-    <a id="amazonBtn" class="btn" href="#">GET YOURS NOW</a>
-  </div>
-
 </div>
 
 
 <script>
-/* amazon expand */
-document.getElementById("amazonCard").addEventListener("click",function(){
-  this.classList.toggle("active");
-});
+/* ---------- HERO CARD ANIMATION ---------- */
+
+const heroCards = [
+  { img:"https://i.ibb.co/Yc1zVwN/paypal-card.png" },
+  { img:"https://i.ibb.co/vk2kYJq/googleplay-card.png" },
+  { img:"https://i.ibb.co/J3ZB7v3/itunes-card.png" }
+];
+
+let index = 0;
+
+const left  = document.getElementById("cardLeft");
+const center= document.getElementById("cardCenter");
+const right = document.getElementById("cardRight");
+
+function renderCards(){
+  const a = heroCards[index % heroCards.length];
+  const b = heroCards[(index+1) % heroCards.length];
+  const c = heroCards[(index+2) % heroCards.length];
+
+  left.src   = a.img;
+  center.src = b.img;
+  right.src  = c.img;
+}
+
+renderCards();
+
+setInterval(()=>{
+  index++;
+  renderCards();
+},2500);
 
 
-/* GOOGLE SHEET CONNECTED (READY) */
+/* ---------- GOOGLE SHEET CONNECT ---------- */
 
 fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec")
-.then(r => r.json())
-.then(data => {
+.then(r=>r.json())
+.then(d=>{
 
-  if(data.google)  document.getElementById("googleBtn").href  = data.google;
-  if(data.xbox)    document.getElementById("xboxBtn").href    = data.xbox;
-  if(data.steam)   document.getElementById("steamBtn").href   = data.steam;
-  if(data.ps)      document.getElementById("psBtn").href      = data.ps;
-  if(data.spotify) document.getElementById("spotifyBtn").href = data.spotify;
-  if(data.itunes)  document.getElementById("itunesBtn").href  = data.itunes;
-  if(data.paypal)  document.getElementById("paypalBtn").href  = data.paypal;
-  if(data.amazon)  document.getElementById("amazonBtn").href  = data.amazon;
+  if(d.google)  googleBtn.href  = d.google;
+  if(d.xbox)    xboxBtn.href    = d.xbox;
+  if(d.steam)   steamBtn.href   = d.steam;
+  if(d.ps)      psBtn.href      = d.ps;
+  if(d.spotify) spotifyBtn.href = d.spotify;
+  if(d.itunes)  itunesBtn.href  = d.itunes;
+  if(d.paypal)  paypalBtn.href  = d.paypal;
 
+  if(d.walmart)  walmartBtn.href  = d.walmart;
+  if(d.target)   targetBtn.href   = d.target;
+  if(d.bestbuy)  bestbuyBtn.href  = d.bestbuy;
+  if(d.uber)     uberBtn.href     = d.uber;
+  if(d.doordash) doordashBtn.href = d.doordash;
+
+  window.amazonLink = d.amazon || "#";
 });
+
+
+/* ---------- AMAZON CLICK EFFECT ---------- */
+
+const pop = document.getElementById("pop");
+
+amazonBtn.addEventListener("click",function(e){
+  e.preventDefault();
+  pop.style.display="flex";
+
+  setTimeout(()=>{
+    pop.style.display="none";
+    if(window.amazonLink){
+      window.open(window.amazonLink,"_blank");
+    }
+  },900);
+});
+
+pop.addEventListener("click",()=>{
+  pop.style.display="none";
+});
+
 </script>
 
 </body>
