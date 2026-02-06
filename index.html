@@ -2,220 +2,218 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Gift Cards</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>Freebie Frenzy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#1f2227;
-  display:flex;
-  justify-content:center;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#2c2f35;
+color:#fff;
+overflow-x:hidden;
 }
 
-.container{
-  width:100%;
-  max-width:420px;
-  padding:20px;
+.hero{
+text-align:center;
+padding:60px 20px 20px;
 }
 
-/* CARD */
+.cards{
+position:relative;
+height:220px;
+margin:auto;
+width:260px;
+}
+
 .card{
-  position:relative;
-  border-radius:22px;
-  overflow:hidden;
-  margin-bottom:18px;
-  color:#fff;
-  transform:rotate(-2deg); /* thoda tedha */
-  cursor:pointer;
-  transition:.35s ease;
+position:absolute;
+width:180px;
+height:220px;
+border-radius:18px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+font-size:26px;
+color:#fff;
+transition:all 0.8s ease;
 }
 
-/* upar wali diagonal line */
-.card::before{
-  content:"";
-  position:absolute;
-  top:-45px;        /* thoda upar */
-  right:-80px;     /* right side */
-  width:150%;
-  height:90px;
-  background:#2b2f36;
-  transform:rotate(-6deg);
-  z-index:0;
+.card span{
+margin-top:10px;
+font-size:28px;
 }
 
-/* main body */
-.card-inner{
-  position:relative;
-  padding:28px 20px 26px;
-  text-align:center;
-  z-index:1;
+.card1{background:#1db954;z-index:3;}
+.card2{background:#e64c7c;z-index:2;}
+.card3{background:#2f6cff;z-index:1;}
+
+.section{
+margin-top:60px;
+transform:skewY(-6deg);
+background:#0a8fa3;
+padding:80px 20px;
 }
 
-/* icon */
-.logo{
-  width:90px;
-  margin:14px auto 12px;
-  display:block;
+.section-inner{
+transform:skewY(6deg);
+max-width:900px;
+margin:auto;
 }
 
-/* title */
-.title{
-  font-size:24px;
-  font-weight:700;
-  margin-top:6px;
+.app{
+background:#0c7f8f;
+border-radius:22px;
+padding:25px;
+margin-bottom:20px;
+cursor:pointer;
+overflow:hidden;
 }
 
-/* amount */
-.amount{
-  font-size:34px;
-  font-weight:700;
-  margin-top:18px;
+.app h2{
+margin:0;
+font-size:26px;
 }
 
-/* expandable area */
 .expand{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .35s ease;
+max-height:0;
+overflow:hidden;
+transition:0.4s ease;
 }
 
-.expand p{
-  margin:20px 0 18px;
-  font-size:15px;
-  line-height:1.4;
+.app.active .expand{
+max-height:400px;
+margin-top:15px;
 }
 
-/* button */
-.btn{
-  display:inline-block;
-  background:rgba(0,0,0,.25);
-  padding:14px 26px;
-  border-radius:30px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
+button{
+border:none;
+background:#066c7b;
+color:white;
+padding:14px 28px;
+border-radius:30px;
+font-size:16px;
+margin-top:15px;
+cursor:pointer;
 }
 
-/* active state */
-.card.active{
-  transform:translateY(-18px) rotate(-2deg); /* akdum upar slide */
+.desc{
+opacity:0.9;
+line-height:1.4;
 }
-
-.card.active .expand{
-  max-height:260px;
-}
-
-/* colors */
-.google{background:#0b8fa2;}
-.spotify{background:#39c252;}
-.xbox{background:#0f7a3e;}
-.amazon{background:#232f3e;}
-
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="hero">
+<h1>DO YOU WANT SOME FREE GIFT CARDS</h1>
 
-  <!-- GOOGLE PLAY -->
-  <div class="card google" data-link="https://play.google.com">
-    <div class="card-inner">
-      <div class="title">Google Play</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
-      <div class="amount">$60</div>
-
-      <div class="expand">
-        <p>
-          Get free Google Play Gift Card code and redeem for anything
-          in the Google Play Store.
-        </p>
-        <a class="btn" href="#" target="_blank">GET YOURS NOW</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SPOTIFY -->
-  <div class="card spotify" data-link="https://www.spotify.com">
-    <div class="card-inner">
-      <div class="title">Spotify</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg">
-      <div class="amount">$60</div>
-
-      <div class="expand">
-        <p>
-          Get free Spotify Gift Card code and redeem for anything
-          in the Spotify App.
-        </p>
-        <a class="btn" href="#" target="_blank">GET YOURS NOW</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- XBOX -->
-  <div class="card xbox" data-link="https://www.xbox.com">
-    <div class="card-inner">
-      <div class="title">Xbox</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Xbox_one_logo.svg">
-      <div class="amount">$60</div>
-
-      <div class="expand">
-        <p>
-          Get free Xbox Gift Card code and redeem for anything
-          in the Xbox Store.
-        </p>
-        <a class="btn" href="#" target="_blank">GET YOURS NOW</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- AMAZON -->
-  <div class="card amazon" data-link="https://www.amazon.com">
-    <div class="card-inner">
-      <div class="title">Amazon</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-      <div class="amount">$60</div>
-
-      <div class="expand">
-        <p>
-          Get free Amazon Gift Card code and redeem for anything
-          on Amazon Store.
-        </p>
-        <a class="btn" href="#" target="_blank">GET YOURS NOW</a>
-      </div>
-    </div>
-  </div>
-
+<div class="cards" id="cards">
+<div class="card card1" id="c1">Spotify<span>$60</span></div>
+<div class="card card2" id="c2">iTunes<span>$100</span></div>
+<div class="card card3" id="c3">Google Play<span>$25</span></div>
+</div>
 </div>
 
+<div class="section">
+<div class="section-inner" id="apps"></div>
+</div>
 
 <script>
-const cards = document.querySelectorAll(".card");
+/* ==== YOUR SHEET LINKS (same keys as names) ==== */
 
-cards.forEach(card => {
+const links={
+google:"https://singingfiles.com/show.php?l=0&u=2495881&id=71508",
+xbox:"",
+steam:"",
+ps:"",
+spotify:"",
+itunes:"",
+paypal:"",
+amazon:"",
+walmart:"",
+target:"",
+bestbuy:"",
+uber:"",
+doordash:""
+};
 
-  const btn = card.querySelector(".btn");
+/* ==== APP DATA ==== */
 
-  card.addEventListener("click", e => {
+const apps=[
+{name:"Google Play",key:"google",amount:"$25"},
+{name:"Xbox",key:"xbox",amount:"$50"},
+{name:"Steam",key:"steam",amount:"$50"},
+{name:"PlayStation",key:"ps",amount:"$50"},
+{name:"Spotify",key:"spotify",amount:"$60"},
+{name:"iTunes",key:"itunes",amount:"$100"},
+{name:"PayPal",key:"paypal",amount:"$25"},
+{name:"Amazon",key:"amazon",amount:"$50"},
+{name:"Walmart",key:"walmart",amount:"$50"},
+{name:"Target",key:"target",amount:"$50"},
+{name:"BestBuy",key:"bestbuy",amount:"$50"},
+{name:"Uber",key:"uber",amount:"$25"},
+{name:"DoorDash",key:"doordash",amount:"$25"}
+];
 
-    if(e.target.classList.contains("btn")) return;
+/* ==== TOP SLIDE CARDS ==== */
 
-    cards.forEach(c=>{
-      if(c!==card) c.classList.remove("active");
-    });
+let order=[c1,c2,c3];
+let positions=[
+{left:"40px",top:"0px",scale:1},
+{left:"20px",top:"15px",scale:0.95},
+{left:"0px",top:"30px",scale:0.9}
+];
 
-    card.classList.toggle("active");
-  });
+function layout(){
+order.forEach((c,i)=>{
+c.style.left=positions[i].left;
+c.style.top=positions[i].top;
+c.style.transform="scale("+positions[i].scale+")";
+});
+}
 
-  btn.addEventListener("click", e=>{
-    e.stopPropagation();
-    const link = card.getAttribute("data-link");
-    window.open(link,"_blank");
-  });
+layout();
 
+setInterval(()=>{
+order.push(order.shift());
+layout();
+},2500);
+
+/* ==== APP SECTIONS ==== */
+
+const box=document.getElementById("apps");
+
+apps.forEach(a=>{
+const d=document.createElement("div");
+d.className="app";
+d.innerHTML=`
+<h2>${a.name} – ${a.amount}</h2>
+<div class="expand">
+<p class="desc">
+Get free ${a.name} Gift Card code and redeem for anything in the
+${a.name} store.
+</p>
+<button>GET YOURS NOW</button>
+</div>
+`;
+
+d.querySelector("button").onclick=(e)=>{
+e.stopPropagation();
+if(links[a.key]){
+window.open(links[a.key],"_blank");
+}else{
+alert("Link not added yet");
+}
+};
+
+d.onclick=()=>{
+d.classList.toggle("active");
+};
+
+box.appendChild(d);
 });
 </script>
-
 </body>
 </html>
