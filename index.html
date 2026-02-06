@@ -1,219 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Freebie Frenzy</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>Giveaway</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style>
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#2c2f35;
-color:#fff;
-overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#2f3136;color:#fff}
+
+/* ---------- TOP SLIDER ----------- */
 
 .hero{
-text-align:center;
-padding:60px 20px 20px;
+  padding:40px 0 20px;
+  text-align:center;
+}
+
+.slider{
+  width:260px;
+  height:150px;
+  margin:0 auto 25px;
+  position:relative;
+  overflow:hidden;
 }
 
 .cards{
-position:relative;
-height:220px;
-margin:auto;
-width:260px;
+  display:flex;
+  width:780px;
+  animation:slide 6s infinite;
 }
 
-.card{
-position:absolute;
-width:180px;
-height:220px;
-border-radius:18px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-font-size:26px;
-color:#fff;
-transition:all 0.8s ease;
+.cards div{
+  width:260px;
+  height:150px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  font-weight:bold;
 }
 
-.card span{
-margin-top:10px;
-font-size:28px;
+.c1{background:#0f9d58}
+.c2{background:#0097a7}
+.c3{background:#c62828}
+
+@keyframes slide{
+  0%{transform:translateX(0)}
+  30%{transform:translateX(0)}
+  40%{transform:translateX(-260px)}
+  70%{transform:translateX(-260px)}
+  80%{transform:translateX(-520px)}
+  100%{transform:translateX(-520px)}
 }
 
-.card1{background:#1db954;z-index:3;}
-.card2{background:#e64c7c;z-index:2;}
-.card3{background:#2f6cff;z-index:1;}
-
-.section{
-margin-top:60px;
-transform:skewY(-6deg);
-background:#0a8fa3;
-padding:80px 20px;
+.hero h1{
+  font-size:28px;
+  line-height:1.2;
 }
 
-.section-inner{
-transform:skewY(6deg);
-max-width:900px;
-margin:auto;
+/* --------- STRIP CARDS ----------- */
+
+.strip{
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:15px;
+  cursor:pointer;
+  transition:.4s;
+  overflow:hidden;
+
+  /* ✅ thoda right side upar tilt */
+  transform:skewY(-4deg);
 }
 
-.app{
-background:#0c7f8f;
-border-radius:22px;
-padding:25px;
-margin-bottom:20px;
-cursor:pointer;
-overflow:hidden;
+.strip > *{
+  transform:skewY(4deg);
 }
 
-.app h2{
-margin:0;
-font-size:26px;
+.strip img{
+  width:60px;
+  margin-bottom:8px;
+  filter:invert(1);
 }
 
-.expand{
-max-height:0;
-overflow:hidden;
-transition:0.4s ease;
+.strip span{
+  font-size:15px;
+  letter-spacing:1px;
 }
 
-.app.active .expand{
-max-height:400px;
-margin-top:15px;
+.amount{
+  font-size:22px;
+  font-weight:bold;
+  margin-top:4px;
 }
 
-button{
-border:none;
-background:#066c7b;
-color:white;
-padding:14px 28px;
-border-radius:30px;
-font-size:16px;
-margin-top:15px;
-cursor:pointer;
+.more{
+  display:none;
+  margin-top:10px;
+  max-width:280px;
+  font-size:14px;
+  line-height:1.4;
 }
 
-.desc{
-opacity:0.9;
-line-height:1.4;
+.strip.active .more{
+  display:block;
 }
+
+.btn{
+  margin-top:12px;
+  display:inline-block;
+  padding:10px 24px;
+  border-radius:25px;
+  background:#00000055;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* colors */
+
+.google{background:#0097a7}
+.xbox{background:#107c10}
+.steam{background:#c62828}
+.ps{background:#2c45a5}
+.spotify{background:#1db954}
+.itunes{background:#ff4f81}
+.paypal{background:#006aa3}
+.amazon{background:#f39c12;color:#111}
+.walmart{background:#0071ce}
+.target{background:#cc0000}
+.bestbuy{background:#003b64}
+.uber{background:#000}
+.doordash{background:#ff3008}
+
 </style>
 </head>
 <body>
 
 <div class="hero">
-<h1>DO YOU WANT SOME FREE GIFT CARDS</h1>
 
-<div class="cards" id="cards">
-<div class="card card1" id="c1">Spotify<span>$60</span></div>
-<div class="card card2" id="c2">iTunes<span>$100</span></div>
-<div class="card card3" id="c3">Google Play<span>$25</span></div>
-</div>
+  <div class="slider">
+    <div class="cards">
+      <div class="c1">$10</div>
+      <div class="c2">$25</div>
+      <div class="c3">$50</div>
+    </div>
+  </div>
+
+  <h1>DO YOU WANT<br>SOME FREE<br>GIFT CARDS</h1>
 </div>
 
-<div class="section">
-<div class="section-inner" id="apps"></div>
+
+<div class="strip google expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg">
+  <span>Google Play</span>
+  <div class="amount">$25</div>
+  <div class="more">
+    Get free Google Play Gift Card code and redeem for anything in the Google Play Store.
+    <br>
+    <a id="googleBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
 </div>
+
+<div class="strip xbox expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xbox.svg">
+  <span>XBOX</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Xbox Gift Card code and redeem for games and content on the Xbox Store.
+    <br>
+    <a id="xboxBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip steam expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg">
+  <span>STEAM</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Steam Gift Card code and redeem for games and content on the Steam Store.
+    <br>
+    <a id="steamBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip ps expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/playstation.svg">
+  <span>PlayStation</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free PlayStation Gift Card code and redeem for games and content on the PlayStation Store.
+    <br>
+    <a id="psBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip spotify expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg">
+  <span>Spotify</span>
+  <div class="amount">$60</div>
+  <div class="more">
+    Get free Spotify Gift Card code and redeem for premium subscription on Spotify.
+    <br>
+    <a id="spotifyBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip itunes expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
+  <span>iTunes</span>
+  <div class="amount">$100</div>
+  <div class="more">
+    Get free Apple iTunes Gift Card code and redeem on the Apple App Store and iTunes Store.
+    <br>
+    <a id="itunesBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip paypal expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/paypal.svg">
+  <span>PayPal</span>
+  <div class="amount">$25</div>
+  <div class="more">
+    Get free PayPal Gift Card code and use it for payments on PayPal.
+    <br>
+    <a id="paypalBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip amazon expand">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg">
+  <span>Amazon</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Amazon Gift Card code and redeem for anything on Amazon.
+    <br>
+    <a id="amazonBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip walmart expand">
+  <span>Walmart</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Walmart Gift Card code and redeem for shopping on Walmart.
+    <br>
+    <a id="walmartBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip target expand">
+  <span>Target</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Target Gift Card code and redeem for shopping on Target.
+    <br>
+    <a id="targetBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip bestbuy expand">
+  <span>BestBuy</span>
+  <div class="amount">$50</div>
+  <div class="more">
+    Get free Best Buy Gift Card code and redeem for shopping on Best Buy.
+    <br>
+    <a id="bestbuyBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip uber expand">
+  <span>Uber</span>
+  <div class="amount">$25</div>
+  <div class="more">
+    Get free Uber Gift Card code and redeem for rides and food on Uber.
+    <br>
+    <a id="uberBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
+<div class="strip doordash expand">
+  <span>DoorDash</span>
+  <div class="amount">$25</div>
+  <div class="more">
+    Get free DoorDash Gift Card code and redeem for food delivery on DoorDash.
+    <br>
+    <a id="doordashBtn" class="btn" target="_blank">GET YOURS NOW</a>
+  </div>
+</div>
+
 
 <script>
-/* ==== YOUR SHEET LINKS (same keys as names) ==== */
 
-const links={
-google:"https://singingfiles.com/show.php?l=0&u=2495881&id=71508",
-xbox:"",
-steam:"",
-ps:"",
-spotify:"",
-itunes:"",
-paypal:"",
-amazon:"",
-walmart:"",
-target:"",
-bestbuy:"",
-uber:"",
-doordash:""
-};
-
-/* ==== APP DATA ==== */
-
-const apps=[
-{name:"Google Play",key:"google",amount:"$25"},
-{name:"Xbox",key:"xbox",amount:"$50"},
-{name:"Steam",key:"steam",amount:"$50"},
-{name:"PlayStation",key:"ps",amount:"$50"},
-{name:"Spotify",key:"spotify",amount:"$60"},
-{name:"iTunes",key:"itunes",amount:"$100"},
-{name:"PayPal",key:"paypal",amount:"$25"},
-{name:"Amazon",key:"amazon",amount:"$50"},
-{name:"Walmart",key:"walmart",amount:"$50"},
-{name:"Target",key:"target",amount:"$50"},
-{name:"BestBuy",key:"bestbuy",amount:"$50"},
-{name:"Uber",key:"uber",amount:"$25"},
-{name:"DoorDash",key:"doordash",amount:"$25"}
-];
-
-/* ==== TOP SLIDE CARDS ==== */
-
-let order=[c1,c2,c3];
-let positions=[
-{left:"40px",top:"0px",scale:1},
-{left:"20px",top:"15px",scale:0.95},
-{left:"0px",top:"30px",scale:0.9}
-];
-
-function layout(){
-order.forEach((c,i)=>{
-c.style.left=positions[i].left;
-c.style.top=positions[i].top;
-c.style.transform="scale("+positions[i].scale+")";
+document.querySelectorAll(".expand").forEach(card=>{
+  card.addEventListener("click",function(e){
+    if(e.target.tagName === "A") return;
+    this.classList.toggle("active");
+  });
 });
-}
 
-layout();
 
-setInterval(()=>{
-order.push(order.shift());
-layout();
-},2500);
+fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec")
+.then(r=>r.json())
+.then(data=>{
 
-/* ==== APP SECTIONS ==== */
+  if(data.google)   googleBtn.href   = data.google;
+  if(data.xbox)     xboxBtn.href     = data.xbox;
+  if(data.steam)    steamBtn.href    = data.steam;
+  if(data.ps)       psBtn.href       = data.ps;
+  if(data.spotify)  spotifyBtn.href  = data.spotify;
+  if(data.itunes)   itunesBtn.href   = data.itunes;
+  if(data.paypal)   paypalBtn.href   = data.paypal;
+  if(data.amazon)   amazonBtn.href   = data.amazon;
+  if(data.walmart)  walmartBtn.href  = data.walmart;
+  if(data.target)   targetBtn.href   = data.target;
+  if(data.bestbuy)  bestbuyBtn.href  = data.bestbuy;
+  if(data.uber)     uberBtn.href     = data.uber;
+  if(data.doordash) doordashBtn.href = data.doordash;
 
-const box=document.getElementById("apps");
-
-apps.forEach(a=>{
-const d=document.createElement("div");
-d.className="app";
-d.innerHTML=`
-<h2>${a.name} – ${a.amount}</h2>
-<div class="expand">
-<p class="desc">
-Get free ${a.name} Gift Card code and redeem for anything in the
-${a.name} store.
-</p>
-<button>GET YOURS NOW</button>
-</div>
-`;
-
-d.querySelector("button").onclick=(e)=>{
-e.stopPropagation();
-if(links[a.key]){
-window.open(links[a.key],"_blank");
-}else{
-alert("Link not added yet");
-}
-};
-
-d.onclick=()=>{
-d.classList.toggle("active");
-};
-
-box.appendChild(d);
 });
+
 </script>
+
 </body>
 </html>
